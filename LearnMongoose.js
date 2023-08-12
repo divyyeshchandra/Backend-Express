@@ -1,7 +1,9 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 
 const app = express();
+const db_link = process.env.mongoDbLink;
 
 app.use(express.json()); //Global Middleware function
 
@@ -105,9 +107,6 @@ userRouter
   .delete(deleteUser);
 
 userRouter.route("/:id").get(getUserId);
-
-const db_link =
-  "mongodb+srv://admin:5naOtt6XtpNVShfV@cluster0.dwvjztd.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose
   .connect(db_link)
